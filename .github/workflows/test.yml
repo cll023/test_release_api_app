@@ -36,7 +36,14 @@ jobs:
           echo test, and deploy your project.
           
       - name: read target version
-        uses: ./.github/workflows/read-first-line.yml
-        with:
-          FILE_NAME: uploader_target_version.txt
+        run: echo "content=$(head -1 uploader_target_version)" >> $GITHUB_OUTPUT
+        id: read_first_line
       
+      - uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          repo: 'dsaltares/godot-wild-jam-18'
+          version: 'tags/v0.0.1'
+          regex: true
+          file: "*"
+          target: 'uploader/'
+          token: ${{ secrets.GITHUB_TOKEN }}
