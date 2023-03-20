@@ -44,5 +44,5 @@ jobs:
           repo: 'cll023/test_release_uploader_app'
           version: 'tags/v0.0.1'
           file: "metadata.json"
-          target: 'uploader/'
+          target: '/'
           token: ${{ secrets.GITHUB_TOKEN }}
