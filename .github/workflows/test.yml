@@ -36,7 +36,7 @@ jobs:
           echo test, and deploy your project.
           
       - name: read target version
-        run: echo "content=$(head -1 uploader_target_version)" >> $GITHUB_OUTPUT
+        run: echo "content=$(head -1 uploader_target_version.txt)" >> $GITHUB_OUTPUT
         id: read_first_line
       
       - uses: dsaltares/fetch-gh-release-asset@master
