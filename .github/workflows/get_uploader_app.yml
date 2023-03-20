@@ -12,7 +12,7 @@ on:
 jobs:
   read_version:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    uses: ./.github/workflows/read-first-line.yml@master
+    uses: ./.github/workflows/read-first-line.yml
     with:
       FILE_NAME: uploader_target_version.txt
   download_uploader:
