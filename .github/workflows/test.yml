@@ -34,3 +34,9 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          
+      - name: read target version
+        uses: ./.github/workflows/read-first-line.yml
+        with:
+          FILE_NAME: uploader_target_version.txt
+      
