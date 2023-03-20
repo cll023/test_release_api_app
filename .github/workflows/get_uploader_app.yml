@@ -18,9 +18,11 @@ jobs:
   download_uploader:
     needs:
     - read_version
-    uses: robinraju/release-downloader@v1.7
+    uses: dsaltares/fetch-gh-release-asset@master
     with:
-      repository: "cll023/test_release_uploader_app"
-      tag: ${{ needs.read_version.outputs.content }}
-      fileName: "*"
-      outFilePath: "src/app"
+      repo: 'cll023/test_release_uploader_app'
+      version: 'tags/v0.0.01'
+      regex: true
+      file: "*"
+      target: 'uploader/'
+      token: ${{ secrets.GITHUB_TOKEN }}
