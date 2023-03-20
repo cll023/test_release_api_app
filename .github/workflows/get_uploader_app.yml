@@ -1,0 +1,26 @@
+name: get_uploader_app
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - uploader_target_version.txt
+
+
+
+jobs:
+  read_version:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    uses: .github/workflows/read-first-line.yml@master
+    with:
+      FILE_NAME: uploader_target_version.txt
+  download_uploader:
+    needs:
+    - read_version
+    uses: robinraju/release-downloader@v1.7
+    with:
+      repository: "cll023/test_release_uploader_app"
+      tag: ${{ needs.read_version.outputs.content }}
+      fileName: "*"
+      outFilePath: "src/app"

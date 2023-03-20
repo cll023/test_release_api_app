@@ -1,0 +1,25 @@
+name: read_first_line
+
+on:
+  workflow_call:
+    inputs:
+      FILE_NAME:
+        description: Target file to read
+        required: true
+        type: string
+    outputs:
+      content:
+        description: "First line content"
+        value: ${{ jobs.read_first_line.outputs.content }}
+
+jobs:
+  read_first_line:
+    runs-on: ubuntu-latest
+    outputs:
+      content: ${{ steps.read_first_line.outputs.content }}
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v3
+    - name: read target version
+      run: echo "content=$(head -1 ${{ inputs.FILE_NAME }})" >> $GITHUB_OUTPUT
+      id: read_first_line
