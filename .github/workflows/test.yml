@@ -43,7 +43,6 @@ jobs:
         with:
           repo: 'cll023/test_release_uploader_app'
           version: 'tags/v0.0.1'
-          regex: true
-          file: "*"
+          file: "metadata.json"
           target: 'uploader/'
           token: ${{ secrets.GITHUB_TOKEN }}
