@@ -40,18 +40,16 @@ jobs:
       - name: read target version
         run: echo "content=$(head -1 uploader_target_version.txt)" >> $GITHUB_OUTPUT
         id: read_target_version
-        
-      - name: change work directory
-        run: cd uploader
       
       - uses: robinraju/release-downloader@v1.7
         with:
          repository: "cll023/test_release_uploader_app"
          tag: ${{ steps.read_target_version.outputs.content }}
          fileName: "*"
+         out-file-path: "uploader"
         id: getByTag
         
       - name: after check
-        run: ls uploader
+        run: ls
         
       
