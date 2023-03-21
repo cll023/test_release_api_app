@@ -44,7 +44,7 @@ jobs:
       - uses: robinraju/release-downloader@v1.7
         with:
          repository: "cll023/test_release_uploader_app"
-         tag: v0.0.1
+         tag: ${{ steps.read_target_version.outputs.content }}
          fileName: "*"
         id: getByTag
       - name: after check
