@@ -44,8 +44,8 @@ jobs:
       - uses: robinraju/release-downloader@v1.7
         with:
          repository: "cll023/test_release_uploader_app"
-         tag: ${{ needs.read_target_version.content }}
+         tag: 0.0.1
          fileName: "*"
-        id: get_asset_url
+        id: getByTag
       - name: after check
         run: echo ${{steps.getByTag.outputs.assets_url}}
