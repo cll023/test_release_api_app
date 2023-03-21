@@ -46,7 +46,6 @@ jobs:
          repository: "cll023/test_release_uploader_app"
          tag: ${{ needs.read_target_version.content }}
          fileName: "*"
-         outFilePath: "uploader"
-     
+        id: get_asset_url
       - name: after check
-        run: ls
+        run: echo ${{steps.getByTag.outputs.assets_url}}
