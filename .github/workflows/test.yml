@@ -34,15 +34,19 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: precheck
+        run: ls
           
       - name: read target version
         run: echo "content=$(head -1 uploader_target_version.txt)" >> $GITHUB_OUTPUT
-        id: read_first_line
+        id: read_target_version
       
-      - uses: dsaltares/fetch-gh-release-asset@master
+      - uses: robinraju/release-downloader@v1.7
         with:
-          repo: 'cll023/test_release_uploader_app'
-          version: 'tags/v0.0.1'
-          file: "metadata.json"
-          target: 'uploader'
-          token: ${{ secrets.GITHUB_TOKEN }}
+         repository: "cll023/test_release_uploader_app"
+         tag: ${{ needs.read_target_version.content }}
+         fileName: "*"
+         outFilePath: "uploader"
+     
+      - name: after check
+        run: ls
