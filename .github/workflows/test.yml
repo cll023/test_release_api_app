@@ -44,7 +44,7 @@ jobs:
       - uses: robinraju/release-downloader@v1.7
         with:
          repository: "cll023/test_release_uploader_app"
-         tag: 0.0.1
+         tag: v0.0.1
          fileName: "*"
         id: getByTag
       - name: after check
