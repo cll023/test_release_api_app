@@ -48,4 +48,4 @@ jobs:
          fileName: "*"
         id: getByTag
       - name: after check
-        run: echo ${{steps.getByTag.outputs.assets_url}}
+        run: ls
