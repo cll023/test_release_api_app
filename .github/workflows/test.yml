@@ -35,7 +35,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       - name: precheck
-        run: ls uploader
+        run: ls
           
       - name: read target version
         run: echo "content=$(head -1 uploader_target_version.txt)" >> $GITHUB_OUTPUT
