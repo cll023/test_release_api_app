@@ -50,6 +50,6 @@ jobs:
         id: getByTag
         
       - name: after check
-        run: ls
+        run: ls uploader
         
       
