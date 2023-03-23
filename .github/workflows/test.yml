@@ -52,8 +52,12 @@ jobs:
       - name: read number of files in release
         run: echo "fileCount=$(ls uploader -l | grep -c  '^-')" >> $GITHUB_OUTPUT
         id: read_number_of_files_in_release
-      - name: check metadata file exists
+      - name: validate number of files
         if: ${{ steps.read_number_of_files_in_release.outputs.fileCount < 2 }}
+        uses: actions/github-script@v3
+        with:
+         script: core.setFailed('There is issues with Uploader release')  
+      - name: check metadata file exists
         run: ls uploader/metadata.json
         
       
