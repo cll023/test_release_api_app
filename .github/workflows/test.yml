@@ -49,7 +49,11 @@ jobs:
          out-file-path: "uploader"
         id: getByTag
         
-      - name: after check
-        run: ls uploader
+      - name: read number of files in release
+        run: echo "fileCount=$(ls -l | grep -c  '^-')" >> $GITHUB_OUTPUT
+        id: read_number_of_files_in_release
+      - name: check metadata file exists
+        if: ${{ steps.read_number_of_files_in_release.outputs.fileCount < 2 }}
+        run: ls uploader/Metadata.json
         
       
