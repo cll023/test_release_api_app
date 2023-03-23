@@ -50,7 +50,7 @@ jobs:
         id: getByTag
         
       - name: read number of files in release
-        run: echo "fileCount=$(ls -l | grep -c  '^-')" >> $GITHUB_OUTPUT
+        run: echo "fileCount=$(ls uploader -l | grep -c  '^-')" >> $GITHUB_OUTPUT
         id: read_number_of_files_in_release
       - name: check metadata file exists
         if: ${{ steps.read_number_of_files_in_release.outputs.fileCount < 2 }}
