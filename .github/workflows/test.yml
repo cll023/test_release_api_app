@@ -56,7 +56,7 @@ jobs:
         if: ${{ steps.read_number_of_files_in_release.outputs.fileCount < 2 }}
         uses: actions/github-script@v3
         with:
-         script: core.setFailed('There is issues with Uploader release')  
+         script: core.setFailed('Uploader release does not container minimal number of files')  
       - name: check metadata file exists
         run: ls uploader/metadata.json
         
